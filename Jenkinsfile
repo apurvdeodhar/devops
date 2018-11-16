@@ -1,19 +1,15 @@
-node
-{
-  stage('First')
-    {
-      echo "This is FIRST Stage"
-    }
-  stage('Two')
-    {
-      echo "This is Second Stage"
-    }
-  stage('Three')
-    {
-      echo "This is Third Stage"
-    }
-  stage('Four')
-    {
-      echo "This is Fourth Stage"
-    }
+node {
+      for (i=0; i<2; i++) {
+           stage "Stage #"+i
+           print 'Hello, world !'
+           if (i==0)
+           {
+               git "https://github.com/Zulaikha12/gitnew.git"
+               echo 'Running on Stage #0'
+           }
+           else {
+               build 'Declarative pipeline'
+               echo 'Running on Stage #1'
+           }
+      }
 }
